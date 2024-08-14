@@ -126,7 +126,7 @@ class Recommender:
 		all_iEmbed0 = NNs.defineParam('iEmbed0', [args.item, args.latdim], reg=True)
 		uEmbed0 = tf.nn.embedding_lookup(all_uEmbed0, self.all_usrs)
 		iEmbed0 = tf.nn.embedding_lookup(all_iEmbed0, self.all_itms)
-		self.timeEmbed = tf.Variable(initial_value=self.makeTimeEmbed(), shape=[self.maxTime, args.latdim*2], name='timeEmbed')
+		self.timeEmbed = tf.Variable(initial_value=self.makeTimeEmbed(), shape=[self.maxTime, args.latdim*2], name='timeEmbed', trainable=True)
 		NNs.addReg('timeEmbed', self.timeEmbed)
 		ulats = [uEmbed0]
 		ilats = [iEmbed0]
